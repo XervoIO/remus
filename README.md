@@ -4,7 +4,7 @@ A Redis messaging bus. This module facilitates a real-time messaging using Redis
 
 ## Installation
 
-The module can be installed using [npm][http://npmjs.org].
+The module can be installed using [npm](http://npmjs.org).
 
     npm install remus
 
