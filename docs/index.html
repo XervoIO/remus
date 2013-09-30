@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./lib/remus.js.html" class="source "><span class="base_path">lib / </span><span class="file_name">remus.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1>remus
+</h1><h3>Version</h3><p>0.0.1</p><h3>Dependencies </h3><ul><li><b>hiredis </b><span>0.1.x</span></li><li><b>redis </b><span>0.8.x</span></li><li><b>node-uuid </b><span>1.3.x</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
+http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 740.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Javascript                       1             60            125            185
+-------------------------------------------------------------------------------
+</pre></p></td><td id="content" class="code"><h1>Remus</h1>
+
+<p>A Redis messaging bus. This module facilitates a real-time messaging using Redis the backend. This allows for interprocess communication using redis as the mediator.</p>
+
+<h2>Installation</h2>
+
+<p>The module can be installed using <a href="http://npmjs.org">npm</a>.</p>
+
+<pre><code>npm install remus
+</code></pre>
+
+<h2>Features</h2>
+
+<ul>
+<li>Send message to client</li>
+<li>Clients broken down by namespace</li>
+<li>Ability to respond to messages</li>
+<li>Configurable redis connection</li>
+</ul>
+
+<h2>Basic Usage</h2>
+
+<p>Remus is easy to use, all you need to do is create a client and send a message. On the other end another client can respond to a message easily using the response function passed into the 'message' event.</p>
+
+<pre><code>var Remus = require('remus');
+var sender = new Remus({
+  namespace : 'your-space',
+  clientId : 'client-1'
+});
+var receiver = new Remus({
+  namespace : 'your-space',
+  clientId : 'client-2'
+});
+receiver.on('message', function(sender, msg, res) {
+  // event for when message comes in
+  console.log(sender, msg);
+  // the res function must be called when done with message either with
+  // a response or not
+  res('reply to message');
+});
+sender.sendMessage('client-2', 'a message', function(err, sender, msg) {
+  // handler for response from 'client-2'
+  console.log(sender, msg);
+});
+</code></pre>
+
+<h2>Documentation</h2>
+
+<h3>Possible Additions</h3>
+
+<ul>
+<li>Broadcast messages (send message to all clients in namespace)</li>
+</ul>  </td></tr></tbody></table></div></body></html>
