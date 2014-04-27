@@ -1,6 +1,6 @@
 {
   "name" : "remus",
-  "version" : "0.0.1",
+  "version" : "0.1.0",
   "main" : "lib/remus.js",
   "dependencies" : {
     "hiredis" : "0.1.x",
