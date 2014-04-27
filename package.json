@@ -1,6 +1,19 @@
 {
   "name" : "remus",
   "version" : "0.1.0",
+  "keywords" : [
+    "redis",
+    "messaging",
+    "communication",
+    "stateless"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/onmodulus/remus.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/onmodulus/remus/issues"
+  },
   "main" : "lib/remus.js",
   "dependencies" : {
     "hiredis" : "0.1.x",
@@ -13,5 +26,6 @@
   "devDependencies": {
     "vows" :  "0.6.x"
   },
+  "author" : "Charlie Key <charlie@modulus.io> (http://modulus.io)",
   "license" : "MIT"
 }
